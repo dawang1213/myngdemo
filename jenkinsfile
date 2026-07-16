@@ -20,7 +20,7 @@ pipeline {
 
             steps {
                 sh '''
-                docker build -t nginx-demo:dawang .
+                docker build -t dawang1213/nginx-demo:dawang .
                 '''
             }
         }
@@ -45,7 +45,7 @@ pipeline {
 
 
                 sh '''
-                docker push nginx-demo:dawang
+                docker push dawang1213/nginx-demo:dawang
                 '''
 
 
