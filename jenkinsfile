@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+    stages {
+        stage('拉取代码') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/dawang1213/myngdemo.git'
+            }
+        }
+        stage('Docker构建') {
+
+            steps {
+                sh '''
+                docker build -t nginx-demo:v1 .
+                '''
+            }
+        }
+        stage('Docker登录') {
+
+
+            steps {
+
+
+                sh '''
+                docker login -u dawang1213 -p Qwerty@1213
+                '''
+
+
+            }
+
+        }
+        stage('推送镜像') {
+
+
+            steps {
+
+
+                sh '''
+                docker push dawang/nginx-demo:v1
+                '''
+
+
+            }
+
+        }
+        stage('部署K8s') {
+
+
+            steps {
+
+
+                sh '''
+
+                kubectl apply -f k8s/deployment.yaml
+
+                kubectl apply -f k8s/service.yaml
+
+                '''
+
+            }
+
+        }
+    }
+}
