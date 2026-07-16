@@ -1,6 +1,15 @@
 pipeline {
     agent any
     stages {
+        stage('清理workspace') {
+
+            steps {
+
+                deleteDir()
+
+            }
+
+        }
         stage('拉取代码') {
             steps {
                 git branch: 'main',
@@ -36,7 +45,7 @@ pipeline {
 
 
                 sh '''
-                docker push dawang/nginx-demo:v1
+                docker push nginx-demo:v1
                 '''
 
 
