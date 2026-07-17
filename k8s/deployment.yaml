@@ -10,7 +10,7 @@ metadata:
 
 spec:
 
-  replicas: 2
+  replicas: 3
 
 
   selector:
@@ -35,7 +35,7 @@ spec:
 
       - name: nginx
 
-        image: dawang1213/nginx-demo:v3
+        image: dawang1213/nginx-demo:v4
 
         ports:
 
