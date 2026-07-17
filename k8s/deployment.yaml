@@ -35,7 +35,7 @@ spec:
 
       - name: nginx
 
-        image: dawang1213/nginx-demo:v2
+        image: dawang1213/nginx-demo:v3
 
         ports:
 
