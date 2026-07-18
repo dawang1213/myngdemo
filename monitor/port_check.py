@@ -1,13 +1,9 @@
 import socket
 
 
-
 def check_port(host, port):
-    """检查指定主机和端口的 TCP 连通性。"""
-    result = {
-        "host": host,
-        "port": port,
-    }
+
+    result = {}
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(3)
@@ -20,5 +16,8 @@ def check_port(host, port):
         result["error"] = str(e)
     finally:
         s.close()
+
+    result["host"] = host
+    result["port"] = port
 
     return result
